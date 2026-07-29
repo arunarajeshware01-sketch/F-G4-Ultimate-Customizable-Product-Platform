@@ -1,0 +1,8 @@
+# Defense in depth: even though products.php now validates real file content,
+# this makes sure nothing in this folder can ever be executed as a script,
+# regardless of its extension.
+<FilesMatch "\.(php|phtml|php3|php4|php5|php7|pht|phar|cgi|pl|py|asp|aspx)$">
+    Require all denied
+</FilesMatch>
+Options -ExecCGI
+php_flag engine off
